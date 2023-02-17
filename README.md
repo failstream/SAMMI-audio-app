@@ -29,7 +29,7 @@ Field Explanations: A ton of the fields repeat themselves, so I'm going to expla
 
 Commands:
 
-* SOUND - nickname
+* **SOUND - nickname**
   - Description: This command creates a new nickname you can use to refer to a specific sound so that you don't have to remember its path. It's not really necessary for every sound, but if there is a single sound you use a lot of you can use this to make it a bit easier to remember its reference.
   - Fields: 
   
@@ -37,13 +37,13 @@ Commands:
   
       `nickname`  - Required
     
-* SOUND - play
+* **SOUND - play**
   - Description: This is pretty self explanatory but here is the explanation anyway. Plays the sound.
   - Fields: 
   
     `path or nickname` - Required
     
-* SOUND - stop
+* **SOUND - stop**
   - Descripton: Stop a sound that is currently playing. If no id is specified it stops ALL sounds of that specific path/nickname.
   - Fields: 
   
@@ -51,7 +51,7 @@ Commands:
     
     `id`               - Optional
     
-* SOUND - pause
+* **SOUND - pause**
   - Description: Pause a sound that is currently playing. If no id is specified it pauses ALL sounds of that specific path/nickname.
   - Fields:
   
@@ -59,7 +59,7 @@ Commands:
     
     `id`               - Optional
     
-* SOUND - resume
+* **SOUND - resume**
   - Description: This will resume a sound after it has been paused. One of the few commands that requires an id.
   - Fields:
   
@@ -67,7 +67,7 @@ Commands:
     
     `id`               - Required
     
-* SOUND - mute
+* **SOUND - mute**
   - Description: This will mute/unmute a sound while it is currently playing. If no id is given it mutes/unmutes ALL sounds of the specific path/nickname.
   - Fields:
   
@@ -77,7 +77,7 @@ Commands:
     
     `mute/unmute`      - Required: Checked mutes, Unchecked unmutes
     
-* SOUND - volume
+* **SOUND - volume**
   - Description: This will set the volume of a sound. If a specific id is passed then it only adjusts the volume for that specific id, otherwise it adjusts for all sounds in that specific path/nickname.
   - Fields:
   
@@ -87,7 +87,7 @@ Commands:
     
     `volume`           - Required: Slider 0 - 100
     
-* SOUND - fade
+* **SOUND - fade**
   - Description: This will allow you to fade a sound from one volume to another. The duration is in ms. Currently is buggy if you go over 1000ms. I'm looking into it. As with all of these if you omit the id it adjusts for ALL sounds in that specific path/nickname.
   - Fields:
   
@@ -101,7 +101,7 @@ Commands:
     
     `duration (ms)`    - Required: How long in milliseconds the fade will take.
  
-* SOUND - seek
+* **SOUND - seek**
   - Description: This will skip to a specific position of a sound. For instance, supposing you had a long song you could skip the intro with this, or send the song back to the start.
   - Fields:
   
@@ -111,7 +111,7 @@ Commands:
     
     `position (seconds)` - Required: The position in seconds for where you wish to seek to.
     
-* SOUND - rate
+* **SOUND - rate**
   - Description: This will change the playback rate of the sound. If you omit the id blah blah blah. You get the idea.
   - Fields:
   
@@ -121,14 +121,14 @@ Commands:
     
     `rate (0.5-4)`     - Required: takes a float from 0.5 to 4. If you choose a variable that isn't valid it gets set to 1 instead.
     
-* SOUND - loop
+* **SOUND - loop**
   - Description: This will set this sound's looping flag to true or false. All sounds are set to false by default. You'll have to change it to true here if you wish a sound to loop. If you don't input an id then it sets all instances of this file/path to looping.
   - Fields:
     `path or nickname` - Required
     `id`               - Optional
     `loop`             - Required: checked loops, unchecked doesn't loop
     
-* SOUND - retrieve info
+* **SOUND - retrieve info**
   - Description: This will allow you to get information about a specific path/nickname or a specific id. It sends the data to an extensionTrigger of your choice. You'll need another button setup with this trigger to "catch" the data.
   - Fields:
   
