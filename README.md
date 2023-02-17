@@ -156,15 +156,47 @@ Commands:
   - Description: This will allow you to get information about a specific path/nickname or a specific id. It sends the data to an extensionTrigger of your choice. You'll need another button setup with this trigger to "catch" the data.
   - Fields:
   
-    `retrieve`         - Required: The data you wish to retrieve. Right now you can get volume, seek location, rate, loop, and duration (in seconds I think) of the sound file. Later I'm going to extend this, but this is all for now.
+    `retrieve`         - Required: The data you wish to retrieve. Right now you can get volume, seek location, rate, state, play status, loop, and duration (in seconds I think) of the sound file. You can also just use the all function to bundle them all up and send them all.
     
     `path or nickname` - Required
     
     `id`               - Optional
     
-    `Ext Trigger Name` - Required If you don't set this then what's the point? Set it to a trigger name and then create another button that gets triggered with it.
+    `Ext Trigger Name` - Required: If you don't set this then what's the point? Set it to a trigger name and then create another button that gets triggered with it.
 
-# SAMMI Extension Triggers
+    <br>
+
+* **SOUND - add listener**
+  - Description: Add a custom event listener that fires for a specific sound and/or a specific id, and a specific event. You can set it to trigger only once or indefinitely. This can let you create buttons that fire off of a sound playing, ending, stopped, when the volume changes, or the play rate changes, or a fade completes.
+  - Fields:
+  
+    `path or nickname` - Required
+    
+    `id`               - Optional
+    
+    `event`            - Required: Dropdown menu with the events that can be selected.
+    
+    `Ext Trigger Name` - Required: Enter the extension trigger where you wish to receive your info.
+    
+    `once`             - Required: checked will remove the listener after firing once, unchecked fires indefinitely
+    
+    <br>
+    
+* **SOUND - remove listener**
+  - Description: Remove the custom event listener that you've already created. It is very important that you enter all the fields exactly the same as when you created the custom listener. For instance, if there is an id in your listener then you must enter the id to remove it. Same if there is no id. You can't leave it blank like other commands and expect all of the events for that path/nickname and event to remove. It must be exact.
+  - Fields:
+  
+    `path or nickname` - Required
+    
+    `id`               - Optional
+    
+    `event`            - Required: Dropdown menu with the events that can be selected.
+    
+    `Ext Trigger Name` - Required: Enter the extension trigger that should be removed.
+    
+    <br>
+    
+# SAMMI Default Extension Triggers
 
 OK, so now we get to the really interesting bit. There are tons of events that happen that fires an extension trigger in SAMMI and I'm sure it will allow for some neat effects. Every event is prefixed with "SoundEvent: " in order to allow you to create a button that catches every event from this extension. Keep in mind that the data I pass to these events may still change based on feedback. Some of the data in the objects may be undefined depending on a variety of factors.
 
