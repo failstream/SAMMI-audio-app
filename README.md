@@ -1,7 +1,7 @@
 # SAMMI-play-any-sound
 A SAMMI extension that you can use to play any type of sound file. Normally only ogg files can be played through SAMMI, however this extension allows you to play a whole range of file-types through the browser all controlled via SAMMI extension commands. These commands also give you more flexibility as well as additional events that are not normally possible through SAMMI's default sound player.
 
-It does come with its own limitations however. Currently it loads all sounds that are selected into memory and it stays there. This is out of necessity due to permissions. If I didn't do it this way the user would have to click EVERY time a new sound is loaded. I am looking for a way to mitigate this, so anyone who has any suggestions I'm all ears. For now I wouldn't recommend using this with a huge number of sounds.
+It does come with its own limitations however. Currently it loads all sounds that are selected into memory and it stays there. This is out of necessity due to permissions. If I didn't do it this way the user would have to click EVERY time a new sound is loaded. I am looking for a way to mitigate this, so anyone who has any suggestions I'm all ears. For now I wouldn't recommend using this with too many sounds. I haven't really pushed the limits of it, but I assume everyone's computer will have a different limit on how many sounds could be loaded at once without affecting performance.
 
 # Install:
 
