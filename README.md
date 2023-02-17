@@ -29,6 +29,8 @@ Field Explanations: A ton of the fields repeat themselves, so I'm going to expla
 
 Commands:
 
+<br> 
+
 * **SOUND - nickname**
   - Description: This command creates a new nickname you can use to refer to a specific sound so that you don't have to remember its path. It's not really necessary for every sound, but if there is a single sound you use a lot of you can use this to make it a bit easier to remember its reference.
   - Fields: 
@@ -37,11 +39,15 @@ Commands:
   
       `nickname`  - Required
     
+    <br> 
+    
 * **SOUND - play**
   - Description: This is pretty self explanatory but here is the explanation anyway. Plays the sound.
   - Fields: 
   
     `path or nickname` - Required
+    
+    <br> 
     
 * **SOUND - stop**
   - Descripton: Stop a sound that is currently playing. If no id is specified it stops ALL sounds of that specific path/nickname.
@@ -51,6 +57,8 @@ Commands:
     
     `id`               - Optional
     
+    <br> 
+    
 * **SOUND - pause**
   - Description: Pause a sound that is currently playing. If no id is specified it pauses ALL sounds of that specific path/nickname.
   - Fields:
@@ -59,6 +67,8 @@ Commands:
     
     `id`               - Optional
     
+    <br> 
+    
 * **SOUND - resume**
   - Description: This will resume a sound after it has been paused. One of the few commands that requires an id.
   - Fields:
@@ -66,6 +76,8 @@ Commands:
     `path or nickname` - Required
     
     `id`               - Required
+    
+    <br> 
     
 * **SOUND - mute**
   - Description: This will mute/unmute a sound while it is currently playing. If no id is given it mutes/unmutes ALL sounds of the specific path/nickname.
@@ -77,6 +89,8 @@ Commands:
     
     `mute/unmute`      - Required: Checked mutes, Unchecked unmutes
     
+    <br> 
+    
 * **SOUND - volume**
   - Description: This will set the volume of a sound. If a specific id is passed then it only adjusts the volume for that specific id, otherwise it adjusts for all sounds in that specific path/nickname.
   - Fields:
@@ -86,6 +100,8 @@ Commands:
     `id`               - Optional
     
     `volume`           - Required: Slider 0 - 100
+    
+    <br> 
     
 * **SOUND - fade**
   - Description: This will allow you to fade a sound from one volume to another. The duration is in ms. Currently is buggy if you go over 1000ms. I'm looking into it. As with all of these if you omit the id it adjusts for ALL sounds in that specific path/nickname.
@@ -101,6 +117,8 @@ Commands:
     
     `duration (ms)`    - Required: How long in milliseconds the fade will take.
  
+ <br> 
+ 
 * **SOUND - seek**
   - Description: This will skip to a specific position of a sound. For instance, supposing you had a long song you could skip the intro with this, or send the song back to the start.
   - Fields:
@@ -110,6 +128,8 @@ Commands:
     `id`                 - Optional
     
     `position (seconds)` - Required: The position in seconds for where you wish to seek to.
+    
+    <br> 
     
 * **SOUND - rate**
   - Description: This will change the playback rate of the sound. If you omit the id blah blah blah. You get the idea.
@@ -121,12 +141,16 @@ Commands:
     
     `rate (0.5-4)`     - Required: takes a float from 0.5 to 4. If you choose a variable that isn't valid it gets set to 1 instead.
     
+   <br> 
+    
 * **SOUND - loop**
   - Description: This will set this sound's looping flag to true or false. All sounds are set to false by default. You'll have to change it to true here if you wish a sound to loop. If you don't input an id then it sets all instances of this file/path to looping.
   - Fields:
     `path or nickname` - Required
     `id`               - Optional
     `loop`             - Required: checked loops, unchecked doesn't loop
+
+   <br> 
     
 * **SOUND - retrieve info**
   - Description: This will allow you to get information about a specific path/nickname or a specific id. It sends the data to an extensionTrigger of your choice. You'll need another button setup with this trigger to "catch" the data.
@@ -144,27 +168,27 @@ Commands:
 
 OK, so now we get to the really interesting bit. There are tons of events that happen that fires an extension trigger in SAMMI and I'm sure it will allow for some neat effects. Every event is prefixed with "SoundEvent: " in order to allow you to create a button that catches every event from this extension. Keep in mind that the data I pass to these events may still change based on feedback. Some of the data in the objects may be undefined depending on a variety of factors.
 
-"SoundEvent: Stop"  Fires when a sound is stopped. data: {path, id}
+* **"SoundEvent: Stop"**  Fires when a sound is stopped. data: `{path, id}`
 
-"SoundEvent: Mute"  Fires when a sound is muted/unmuted. data: {path, id}
+* **"SoundEvent: Mute"**  Fires when a sound is muted/unmuted. data: `{path, id}`
 
-"SoundEvent: Pause"  Fires when a sound is paused. data: {path, id}
+* **"SoundEvent: Pause"**  Fires when a sound is paused. data: `{path, id}`
 
-"SoundEvent: Fade"  Fires when a fade has completed. data: {path, id}
+* **"SoundEvent: Fade"**  Fires when a fade has completed. data: `{path, id}`
 
-"SoundEvent: RateChange"  Fires when a sound's rate has changed. data: {path, id}
+* **"SoundEvent: RateChange"**  Fires when a sound's rate has changed. data: `{path, id}`
 
-"SoundEvent: VolumeChange"  Fires when a sound's volume has changed. data: {path, id}
+* **"SoundEvent: VolumeChange"**  Fires when a sound's volume has changed. data: `{path, id}`
 
-"SoundEvent: Load"  Fires when a sound has loaded and is ready to play. This only happens directly after choosing the folder in the browser. This will let you grab the paths in SAMMI without having to be dependant on getting them from the browser or knowing the name of the file. Keep in mind that this happens prior to load errors, so you will want to watch for those even after you get this event. data: {path}
+* **"SoundEvent: Load"**  Fires when a sound has loaded and is ready to play. This only happens directly after choosing the folder in the browser. This will let you grab the paths in SAMMI without having to be dependant on getting them from the browser or knowing the name of the file. Keep in mind that this happens prior to load errors, so you will want to watch for those even after you get this event. data: `{path}`
 
-"SoundEvent: Play" Fires when a sound has begun playing. {path, id}
+* **"SoundEvent: Play"** Fires when a sound has begun playing. `{path, id}`
 
-"SoundEvent: End" Fires when a sound has reached the end. Be wary that for looping sounds this will fire every time it reaches the end. {path, id, looping}
+* **"SoundEvent: End"** Fires when a sound has reached the end. Be wary that for looping sounds this will fire every time it reaches the end. `{path, id, looping}`
 
-"SoundEvent: ERROR -Load" Fires when there is a load error. This only happens directly after choosing the folder in the browser. You can use this event to filter out files that have loaded with errors and remove them after you've already loaded them with the previous extension. The error number corresponds with a Howler.js error. {path, id, error}
+* **"SoundEvent: ERROR -Load"** Fires when there is a load error. This only happens directly after choosing the folder in the browser. You can use this event to filter out files that have loaded with errors and remove them after you've already loaded them with the previous extension. The error number corresponds with a Howler.js error. `{path, id, error}`
 
-"SoundEvent: ERROR -Play" Fires when there is an error trying to play a file. The error number corresponds with a Howler.js error. {path, id, error}
+* **"SoundEvent: ERROR -Play"** Fires when there is an error trying to play a file. The error number corresponds with a Howler.js error. `{path, id, error}`
 
 # Troubleshooting
 
