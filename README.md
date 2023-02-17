@@ -3,7 +3,7 @@ A SAMMI extension that you can use to play any type of sound file. Normally only
 
 It does come with its own limitations however. Currently it loads all sounds that are selected into memory and it stays there. This is out of necessity due to permissions. If I didn't do it this way the user would have to click EVERY time a new sound is loaded. I am looking for a way to mitigate this, so anyone who has any suggestions I'm all ears. For now I wouldn't recommend using this with a huge number of sounds.
 
-#Install:
+# Install:
 
 Download the release version of SAMMI play any sound extension and install using SAMMI's built in extension installer.
 
@@ -11,7 +11,7 @@ Create a folder in your SAMMI/bridge directory to house the sound files you want
 
 After that your ready to start!
 
-#Usage:
+# Usage:
 
 Open the bridge.html file if it isn't already open and switch to the play any sound extension tab. Click the choose files button and navigate to the folder you created during the install. Press the upload key when you are at the correct directory. A table should load with all of your sound files as well as any errors that occurred below the table. If you are getting error when attempting to load sound files, see the troubleshooting section below.
 
@@ -19,7 +19,7 @@ Unfortunately this step must be done every single time you start the bridge. I a
 
 To use the commands within SAMMI simply open a button's commands menu and click the + sign to make a new command. Go to Extension Commands > SAMMI Bridge. All of the extensions that have been added will be here. I've labeled them all with "SOUND - " preceding the command so as to make it a bit easier for folks with many extensions installed. See below for a list of commands and what they do.
 
-#SAMMI Commands
+# SAMMI Commands
 
 Field Explanations: A ton of the fields repeat themselves, so I'm going to explain the most common ones here.
 
@@ -108,7 +108,7 @@ SOUND - retrieve info
     id: Optional
     Ext Trigger Name: Required If you don't set this then what's the point? Set it to a trigger name and then create another button that gets triggered with it.
 
-#SAMMI Extension Triggers
+# SAMMI Extension Triggers
 
 OK, so now we get to the really interesting bit. There are tons of events that happen that fires an extension trigger in SAMMI and I'm sure it will allow for some neat effects. Every event is prefixed with "SoundEvent: " in order to allow you to create a button that catches every event from this extension. Keep in mind that the data I pass to these events may still change based on feedback. Some of the data in the objects may be undefined depending on a variety of factors.
 
@@ -134,7 +134,7 @@ OK, so now we get to the really interesting bit. There are tons of events that h
 
 "SoundEvent: ERROR -Play" Fires when there is an error trying to play a file. The error number corresponds with a Howler.js error. {path, id, error}
 
-#Troubleshooting
+# Troubleshooting
 
 This is a work in progress so bear with me. If you are having a problem not listed here send me a message on discord @failstream#2571 and I'll get back to you when I can.
 
