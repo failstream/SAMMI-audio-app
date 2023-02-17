@@ -1,5 +1,7 @@
 # SAMMI-play-any-sound
-A SAMMI extension that you can use to play any type of sound file. Normally only ogg files can be played through SAMMI, however this extension allows you to play a whole range of file-types through the browser all controlled via SAMMI extension commands. These commands also give you more flexibility as well as additional events that are not normally possible through SAMMI's default sound player. It does come with its own limitations however.
+A SAMMI extension that you can use to play any type of sound file. Normally only ogg files can be played through SAMMI, however this extension allows you to play a whole range of file-types through the browser all controlled via SAMMI extension commands. These commands also give you more flexibility as well as additional events that are not normally possible through SAMMI's default sound player.
+
+It does come with its own limitations however. Currently it loads all sounds that are selected into memory and it stays there. This is out of necessity due to permissions. If I didn't do it this way the user would have to click EVERY time a new sound is loaded. I am looking for a way to mitigate this, so anyone who has any suggestions I'm all ears. For now I wouldn't recommend using this with a huge number of sounds.
 
 #Install:
 
@@ -105,9 +107,32 @@ SOUND - retrieve info
     path or nickname: Required
     id: Optional
     Ext Trigger Name: Required If you don't set this then what's the point? Set it to a trigger name and then create another button that gets triggered with it.
-  
 
 #SAMMI Extension Triggers
+
+OK, so now we get to the really interesting bit. There are tons of events that happen that fires an extension trigger in SAMMI and I'm sure it will allow for some neat effects. Every event is prefixed with "SoundEvent: " in order to allow you to create a button that catches every event from this extension. Keep in mind that the data I pass to these events may still change based on feedback. Some of the data in the objects may be undefined depending on a variety of factors.
+
+"SoundEvent: Stop"  Fires when a sound is stopped. data: {path, id}
+
+"SoundEvent: Mute"  Fires when a sound is muted/unmuted. data: {path, id}
+
+"SoundEvent: Pause"  Fires when a sound is paused. data: {path, id}
+
+"SoundEvent: Fade"  Fires when a fade has completed. data: {path, id}
+
+"SoundEvent: RateChange"  Fires when a sound's rate has changed. data: {path, id}
+
+"SoundEvent: VolumeChange"  Fires when a sound's volume has changed. data: {path, id}
+
+"SoundEvent: Load"  Fires when a sound has loaded and is ready to play. This only happens directly after choosing the folder in the browser. This will let you grab the paths in SAMMI without having to be dependant on getting them from the browser or knowing the name of the file. Keep in mind that this happens prior to load errors, so you will want to watch for those even after you get this event. data: {path}
+
+"SoundEvent: Play" Fires when a sound has begun playing. {path, id}
+
+"SoundEvent: End" Fires when a sound has reached the end. Be wary that for looping sounds this will fire every time it reaches the end. {path, id, looping}
+
+"SoundEvent: ERROR -Load" Fires when there is a load error. This only happens directly after choosing the folder in the browser. You can use this event to filter out files that have loaded with errors and remove them after you've already loaded them with the previous extension. The error number corresponds with a Howler.js error. {path, id, error}
+
+"SoundEvent: ERROR -Play" Fires when there is an error trying to play a file. The error number corresponds with a Howler.js error. {path, id, error}
 
 #Troubleshooting
 
