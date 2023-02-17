@@ -23,9 +23,9 @@ To use the commands within SAMMI simply open a button's commands menu and click 
 
 Field Explanations: A ton of the fields repeat themselves, so I'm going to explain the most common ones here.
 
-  path or nickname: You put the path that shows up in the SAMMI bridge here. You can alternatively use a nickname of your choice if you do choose to set it up for a specific sound.
+- path or nickname: You put the path that shows up in the SAMMI bridge here. You can alternatively use a nickname of your choice if you do choose to set it up for a specific sound.
   
-  id: So, just like SAMMI you can play the same sound at the same time. This is a unique id that is given to a specific sound playing for that path/nickname. Even though it is unique to the path/nickname it is not unique globally, so you still need the path/nickname to use with the id. You can get the id through extension triggers. See below for more information.
+- id: So, just like SAMMI you can play the same sound at the same time. This is a unique id that is given to a specific sound playing for that path/nickname. Even though it is unique to the path/nickname it is not unique globally, so you still need the path/nickname to use with the id. You can get the id through extension triggers. See below for more information.
 
 SOUND - nickname
   Description: This command creates a new nickname you can use to refer to a specific sound so that you don't have to remember its path. It's not really necessary for every sound, but if there is a single sound you use a lot of you can use this to make it a bit easier to remember its reference.
