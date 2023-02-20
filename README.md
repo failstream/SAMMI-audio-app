@@ -232,3 +232,19 @@ This is a work in progress so bear with me. If you are having a problem not list
 2) I'm getting an error code 4 when loading one of my sound files!
 
 * If you are getting this error code then the Howler.js library that I used does not like your file for some reason. I'm not sure why that might be as I didn't make it. You could open the file in a program like Audacity and just save a new copy without modifying it. That has worked for me so far.
+
+# Changelog
+
+* v0.6
+  * 1) Fixed several load/unload bugs and table element bugs. Unloading and loading sounds should work without problems now.
+
+  * 2) Fixed a case where play triggers were sometimes not happening when triggering from the deck.
+
+  * 3) Normalized the error trigger names to be more in line with the other trigger names. "ERROR  -Load" is now "LoadError" and "ERROR  -Play" is now "PlayError"
+
+  * 4) Retrieve Info now has the option to either set a variable or trigger an extension or both in order to retrieve the object.
+
+  * 5) Created and added the Audio App Testing deck v1.0.
+
+* v0.5
+  * Initial release
