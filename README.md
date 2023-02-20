@@ -241,3 +241,6 @@ This is a work in progress so bear with me. If you are having a problem not list
   3) Normalized the error trigger names to be more in line with the other trigger names. "ERROR  -Load" is now "LoadError" and "ERROR  -Play" is now "PlayError"
   4) Retrieve Info now has the option to either set a variable or trigger an extension or both in order to retrieve the object.
   5) Created and added the Audio App Testing deck v1.0.
+
+* v0.5
+  1) Initial release
