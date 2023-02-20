@@ -158,7 +158,7 @@ Commands:
     <br>
 
 * **SOUND - add listener**
-  - Description: Add a custom event listener that fires for a specific sound and/or a specific id, and a specific event. You can set it to trigger only once or indefinitely. This can let you create buttons that fire if a sound plays, ends, is stopped/paused, when the volume changes, when the play rate changes, a fade completes or the seek header is changed. When it sends the trigger it also sends an object with the following fields: `{path, id, event, playing, loop, seek, rate, volume, mute, state, duration, trigger}`
+  - Description: Add a custom event listener that fires for a specific sound and/or a specific id, and a specific event. You can set it to trigger only once or indefinitely. This can let you create buttons that fire if a sound plays, ends, is stopped/paused, when the volume changes, when the play rate changes, a fade completes or the seek header is changed. If the sound is unloaded it also removes all listeners so if you load the sound again you will have to add any listeners you want to listen for again. When it sends the trigger it also sends an object with the following fields: `{path, id, event, playing, loop, seek, rate, volume, mute, state, duration, trigger}`
   - Fields:
   
     `filepath`         - Required
